@@ -1,6 +1,10 @@
 (function () {
-  emailjs.init("ewZ_uvxVsdLOuCOsS"); // Sustituye TU_USER_ID_DE_EMAILJS con tu ID de usuario de EmailJS
+  emailjs.init("ewZ_uvxVsdLOuCOsS");
 })();
+
+const user_email = document.querySelector("#user_email");
+const user_name = document.querySelector("#user_name");
+const message = document.querySelector("#message");
 
 document
   .getElementById("contact-form")
@@ -10,6 +14,9 @@ document
     emailjs.sendForm("service_x7xbkkj", "template_6vyy97c", this).then(
       function () {
         alert("Mensaje enviado con éxito!");
+        user_email.value = "";
+        user_name.value = "";
+        message.value = "";
       },
       function (error) {
         alert("Error en el envío: " + JSON.stringify(error));
